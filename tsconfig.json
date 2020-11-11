@@ -7,6 +7,7 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
@@ -17,7 +18,16 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@time-tracker/models": ["src/app/models/index.ts"],
+      "@time-tracker/services": ["src/app/services/index.ts"],
+      "@time-tracker/components": ["src/app/components/index.ts"],
+      "@time-tracker/api": ["src/app/api/index.ts"],
+      "@time-tracker/constants": ["src/app/constants/index.ts"],
+      "@time-tracker/pipes": ["src/app/pipes/index.ts"],
+      "@time-tracker/state": ["src/app/state/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

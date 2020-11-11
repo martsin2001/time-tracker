@@ -1,0 +1,12 @@
+<div class="time-tracker-landing">
+  <app-time-tracker-form
+    (startTracking)="startTracking($event)"
+    (stopTracking)="stopTracking($event)"
+    (disconnectTracking)="disconnectTracking($event)"
+  ></app-time-tracker-form>
+
+  <app-time-tracker-entries-list
+    [entriesList]="entriesList$ | async"
+    (updateEntry)="updateEntry($event)"
+  ></app-time-tracker-entries-list>
+</div>

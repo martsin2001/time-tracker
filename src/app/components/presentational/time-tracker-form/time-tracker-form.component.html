@@ -1,0 +1,43 @@
+<form [formGroup]="timeTrackerForm" class="time-tracker-form">
+  <div class="time-tracker-form__item">
+    <mat-form-field class="example-full-width">
+      <mat-label>What are you working on?</mat-label>
+      <input formControlName="description" matInput />
+    </mat-form-field>
+  </div>
+  <div class="time-tracker-form__item">
+    <mat-form-field>
+      <mat-label>Select project</mat-label>
+      <mat-select formControlName="project">
+        <mat-option *ngFor="let project of projects" [value]="project"> {{ project }} </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="time-tracker-form__item">
+    <mat-form-field class="time-tracker-form__time-input">
+      <input matInput [value]="duration$ | async | timer" #timeField />
+    </mat-form-field>
+  </div>
+  <ng-container [ngSwitch]="inProgress$ | async">
+    <button
+      *ngSwitchCase="false"
+      class="time-tracker-form__controller"
+      mat-raised-button
+      color="primary"
+      (click)="start()"
+      [disabled]="timeTrackerForm.invalid"
+    >
+      Start
+    </button>
+    <button
+      *ngSwitchCase="true"
+      class="time-tracker-form__controller"
+      mat-raised-button
+      color="warn"
+      (click)="stop()"
+      [disabled]="timeTrackerForm.invalid"
+    >
+      Stop
+    </button>
+  </ng-container>
+</form>

@@ -1,0 +1,23 @@
+<div class="entries-list">
+  <ng-container *ngFor="let section of entriesList | transformEntriesList; let last = last">
+    <h1 class="entries-list__section-title">{{ section?.date }}</h1>
+    <ng-container *ngFor="let entry of section.list">
+      <div class="entries-list__entry-content">
+        <div class="entries-list__entry-description">{{ entry.description }}</div>
+        <div class="entries-list__entry-project">
+          <div class="project-name">{{ entry.project }}</div>
+          <div class="play-button" (click)="play(entry.id)">
+            <mat-icon>play_arrow</mat-icon>
+          </div>
+        </div>
+        <div class="entries-list__entry-duration">
+          {{ entry?.startedAt | duration: entry?.stopedAt:'HH:mm:ss' }}
+        </div>
+        <div class="entries-list__entry-time-range">
+          {{ entry?.startedAt | date: 'HH:mm' }} - {{ entry?.stopedAt | date: 'HH:mm' }}
+        </div>
+      </div>
+    </ng-container>
+    <mat-divider *ngIf="!last" class="divider"></mat-divider>
+  </ng-container>
+</div>
