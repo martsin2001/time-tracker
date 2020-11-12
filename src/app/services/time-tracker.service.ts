@@ -13,7 +13,7 @@ export class TimeTrackerService implements TimeTrackerApi {
   upsertEntry(entry: TimeTrackerEntry): Observable<CommonResponse> {
     const data: DatabaseModel = this.getDatabaseModel;
     const updateEntriesList = data.entriesList.filter((e) => e.id !== entry.id);
-    updateEntriesList.push({ ...entry, modifiedAt: new Date() });
+    updateEntriesList.push(entry);
     localStorage.setItem(TIME_TRACKER_LOCAL_STORAGE, JSON.stringify({ ...data, entriesList: updateEntriesList }));
     return of({ sussces: true });
   }

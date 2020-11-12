@@ -103,6 +103,7 @@ export class TimeTrackerFormComponent implements OnInit, OnDestroy, AfterViewIni
     this.timeTrackerForm.enable();
     this.selectedEntry = {
       ...this.selectedEntry,
+      modifiedAt: new Date(),
       stopedAt: moment(this.selectedEntry.startedAt).add(this.duration$.value, 'seconds').toDate(),
     };
     this.stopTracking.next(this.selectedEntry);
